@@ -1,0 +1,6 @@
+{
+  "name": "AI Interview Prep Pro",
+  "description": "A comprehensive AI-powered platform for mock interviews, resume analysis, and real-time feedback using Google Gemini.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
