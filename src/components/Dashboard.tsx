@@ -84,16 +84,8 @@ export function Dashboard() {
       console.error("Upload error:", error);
       const message = error?.message || "Failed to upload resume. Please try again.";
       setUploadError(message);
-      if (
-        message.includes("Unable to reach backend API") ||
-        message.includes("service is unavailable") ||
-        message.includes("Failed to fetch") ||
-        message.includes("NetworkError") ||
-        message.includes("404")
       ) {
-        setBackendWarning(
-          "The backend API host appears to be missing or unreachable. Start the server at http://localhost:3000 and make sure the app is pointing to the same backend host."
-        );
+        setBackendWarning(BACKEND_MISSING_MESSAGE);
       } else {
         setBackendWarning("");
       }

@@ -50,7 +50,8 @@ function PlatformLayout({ children }: { children: React.ReactNode }) {
     window.addEventListener('storage', checkAuth);
 
     // Socket.IO connection
-    const socket = io(import.meta.env.VITE_API_URL || "http://localhost:5000", {
+    // Use `VITE_API_URL` if provided; otherwise connect to same origin.
+    const socket = io(import.meta.env.VITE_API_URL || undefined, {
       withCredentials: true,
     });
 

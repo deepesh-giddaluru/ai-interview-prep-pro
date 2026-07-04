@@ -4,6 +4,9 @@ import cookieParser from "cookie-parser";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 import { apiRouter } from "./routes/api";
 import authRoutes from "./routes/auth";
 import interviewRoutes from "./routes/interviews";
@@ -20,7 +23,7 @@ export function createApp() {
   // Socket.IO setup
   const io = new Server(httpServer, {
     cors: {
-      origin: process.env.CLIENT_URL || "http://localhost:3000",
+      origin: process.env.CLIENT_URL || undefined,
       credentials: true,
     },
   });
@@ -36,7 +39,7 @@ export function createApp() {
 
   // CORS configuration
   const corsOptions = {
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: process.env.CLIENT_URL || undefined,
     credentials: true,
     optionsSuccessStatus: 200,
   };
